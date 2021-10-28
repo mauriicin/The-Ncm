@@ -18,19 +18,18 @@ export default function HomePage(){
     const themeTextInput = colorScheme === 'light' ? styles.lightThemeInput : styles.darkThemeInput;
     const statusbarcolor = colorScheme === 'light' ? 'dark' : 'light';
     const placecolor = colorScheme === 'light' ? '#333' : '#fff';
+ 
+
     
     //definindo variaveis
     const [number, onChangeNumber] = useState(null);
 
     const navigation = useNavigation();
 
-
     function navigateToConsulta(ncm){
         navigation.navigate('Consulta', {ncm});
     }
-
  
-
     function handleSubmit(data){        
         if(!data){
             return Alert.alert(
@@ -42,11 +41,10 @@ export default function HomePage(){
               );
         }   
         else {
-           return console.log(data);
+           return navigateToConsulta(data);
         }
     }
-    
-  
+      
     return(       
         <>
         <StatusBar style={statusbarcolor} translucent={true} animated={true} />
