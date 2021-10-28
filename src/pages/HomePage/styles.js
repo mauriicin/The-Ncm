@@ -22,8 +22,6 @@ export default StyleSheet.create({
         borderColor: '#000000',
         color: '#000000',
     },
-
-
     //TEMA DARK
     darkContainer: {
         backgroundColor: '#333333',
@@ -40,7 +38,6 @@ export default StyleSheet.create({
         color: '#ffffff',
     },
    
-
     //inputs
     inputhome: {
         height: 40,
