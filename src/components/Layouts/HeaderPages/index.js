@@ -1,6 +1,7 @@
 import React from "react";
 import { Feather } from '@expo/vector-icons';
 import { View, Image, TouchableOpacity } from 'react-native';
+import { useNavigation, useRoute  } from '@react-navigation/native';
 
 //importando estilos
 import styles from './styles';

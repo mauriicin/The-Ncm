@@ -63,7 +63,7 @@ export default StyleSheet.create({
     button: {
         alignItems: "center",
         backgroundColor: "#00b1a9",
-        height: 40,
+        height: 50,
         marginTop: 0,
         padding: 11,
         marginLeft: 44,   

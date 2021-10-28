@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { Feather } from '@expo/vector-icons';
 
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { View, Text, TouchableOpacity, useColorScheme, TextInput, ScrollView } from 'react-native';
 
 
@@ -16,13 +17,16 @@ export default function HomePage(){
     const themeTextStyle = colorScheme === 'light' ? styles.lightThemeText : styles.darkThemeText;
     const themeTextInput = colorScheme === 'light' ? styles.lightThemeInput : styles.darkThemeInput;
     const statusbarcolor = colorScheme === 'light' ? 'dark' : 'light';
-    
+    const placecolor = colorScheme === 'light' ? '#333' : '#fff';
     
     //definindo variaveis
-    const [number, onChangeNumber] = React.useState(null);
+    const [number, onChangeNumber] = useState(null);
 
-    const onPress = () => setCount(prevCount => prevCount + 1);
+    const navigation = useNavigation();
 
+    function navigateToConsulta(ncm){
+        navigation.navigate('Consulta', {ncm});
+    }
   
     return(       
         <>
@@ -36,9 +40,12 @@ export default function HomePage(){
                     <Text style={[styles.textp, themeTextStyle]}>Serviço gratuito de consulta por código e descrição da Nomenclatura Comum do Mercosul.</Text>
                 </View> 
 
-                <TextInput style={[styles.inputhome, themeTextInput]} placeholderTextColor="" onChangeText={onChangeNumber} value={number} placeholder="Digite o código NCM para pesquisar"keyboardType="numeric"/>
-                <TouchableOpacity style={styles.button} onPress={onPress}>
-                    <Text style={styles.buttontext}>Consultar</Text>
+                <TextInput maxLength='8' style={[styles.inputhome, themeTextInput]} placeholderTextColor={placecolor} onChangeText={onChangeNumber} value={number} placeholder="Digite o código NCM para pesquisar"keyboardType="numeric"/>
+                <TouchableOpacity style={styles.button} onPress={() => navigateToConsulta(number)}>
+                    <Text style={styles.buttontext}>
+                        <Feather name="search" size={28} /> 
+                        Consultar
+                    </Text>
                 </TouchableOpacity>
                 
                 <View style={styles.box}>
