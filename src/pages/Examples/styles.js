@@ -7,5 +7,19 @@ export default StyleSheet.create({
         paddingHorizontal: 24,
         paddingTop: Constants.statusBarHeight + 20,
     },
-    
+        
+    //definindo a cor pelo sistema
+    lightContainer: {
+        backgroundColor: '#ffffff',
+    },
+    darkContainer: {
+        backgroundColor: '#000000',
+    },
+    lightThemeText: {
+        color: '#000000',
+    },
+    darkThemeText: {
+        color: '#ffffff',
+    },
+
 });
