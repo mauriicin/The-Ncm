@@ -22,10 +22,7 @@ export default function Consulta(){
     const route = useRoute();
     const ncm = route.params.ncm;
 
-    if(!ncm){
-        return navigation.navigate('HomePage');
-    }
-
+    
 
 
   

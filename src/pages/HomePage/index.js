@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Feather } from '@expo/vector-icons';
 
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, TouchableOpacity, useColorScheme, TextInput, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, useColorScheme, TextInput, ScrollView, Alert } from 'react-native';
 
 
 import styles from './styles';
@@ -24,9 +24,28 @@ export default function HomePage(){
 
     const navigation = useNavigation();
 
+
     function navigateToConsulta(ncm){
         navigation.navigate('Consulta', {ncm});
     }
+
+ 
+
+    function handleSubmit(data){        
+        if(!data){
+            return Alert.alert(
+                "Erro",
+                "O NCM não foi preenchido.",
+                [
+                  { text: "OK"}
+                ]
+              );
+        }   
+        else {
+           return console.log(data);
+        }
+    }
+    
   
     return(       
         <>
@@ -40,8 +59,20 @@ export default function HomePage(){
                     <Text style={[styles.textp, themeTextStyle]}>Serviço gratuito de consulta por código e descrição da Nomenclatura Comum do Mercosul.</Text>
                 </View> 
 
-                <TextInput maxLength='8' style={[styles.inputhome, themeTextInput]} placeholderTextColor={placecolor} onChangeText={onChangeNumber} value={number} placeholder="Digite o código NCM para pesquisar"keyboardType="numeric"/>
-                <TouchableOpacity style={styles.button} onPress={() => navigateToConsulta(number)}>
+                <TextInput 
+                maxLength={8}
+                style={[styles.inputhome, themeTextInput]} 
+                placeholderTextColor={placecolor} 
+                onChangeText={onChangeNumber} 
+                value={number} 
+                placeholder="Digite o código NCM para pesquisar"
+                keyboardType="numeric"
+                />
+               
+                <TouchableOpacity 
+                style={styles.button} 
+                onPress={() => handleSubmit(number)}
+                >
                     <Text style={styles.buttontext}>
                         <Feather name="search" size={28} /> 
                         Consultar
