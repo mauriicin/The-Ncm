@@ -1,4 +1,5 @@
 import React from "react";
+import { StatusBar } from 'expo-status-bar';
 
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { View, Text, TouchableOpacity, useColorScheme, TextInput, ScrollView } from 'react-native';
@@ -14,7 +15,7 @@ export default function HomePage(){
     const themeContainerStyle = colorScheme === 'light' ? styles.lightContainer : styles.darkContainer;
     const themeTextStyle = colorScheme === 'light' ? styles.lightThemeText : styles.darkThemeText;
     const themeTextInput = colorScheme === 'light' ? styles.lightThemeInput : styles.darkThemeInput;
-
+    const statusbarcolor = colorScheme === 'light' ? 'dark' : 'light';
     
     
     //definindo variaveis
@@ -24,6 +25,8 @@ export default function HomePage(){
 
   
     return(       
+        <>
+        <StatusBar style={statusbarcolor} translucent={true} animated={true} />
         <View style={[styles.container, themeContainerStyle]}>
             <ScrollView>
                 <HeaderHomePage />
@@ -51,5 +54,6 @@ export default function HomePage(){
                 </View>
         </ScrollView>
         </View> 
+        </>
     );
 }
