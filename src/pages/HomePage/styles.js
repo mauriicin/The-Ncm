@@ -4,33 +4,19 @@ import Constants from 'expo-constants';
 export default StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 24,
         paddingTop: Constants.statusBarHeight + 20,
-    },        
+    },    
     //definindo a cor pelo sistema
+    //TEMA LIGHT
     lightContainer: {
         backgroundColor: '#ffffff',
-    },
-    darkContainer: {
-        backgroundColor: '#000000',
-    },
+    },    
     lightThemeText: {
         color: '#000000',
     },
-    darkThemeText: {
-        color: '#ffffff',
-    },
-    darkThemeInput: {
-        borderColor: '#ffffff',
-        color: '#ffffff',
-    },
     lightThemeInput: {
-        borderColor: '#000000',
+        borderColor: '#00b1a9',
         color: '#000000',
-    },
-    darkThemeButton: {
-        borderColor: '#ffffff',
-        color: '#ffffff',
     },
     lightThemeButton: {
         borderColor: '#000000',
@@ -38,20 +24,77 @@ export default StyleSheet.create({
     },
 
 
+    //TEMA DARK
+    darkContainer: {
+        backgroundColor: '#333333',
+    },
+    darkThemeText: {
+        color: '#ffffff',
+    },
+    darkThemeInput: {
+        borderColor: '#00b1a9',
+        color: '#ffffff',
+    },    
+    darkThemeButton: {
+        borderColor: '#ffffff',
+        color: '#ffffff',
+    },
+   
+
     //inputs
     inputhome: {
         height: 40,
         margin: 12,
+        paddingLeft: 12,
+        paddingRight: 12,
         borderWidth: 1,
-        padding: 10,        
     },
-
+    texth1: {
+        marginTop: 35,
+        marginBottom: 15,
+        padding: 5,
+        fontSize: 22,
+        textAlign: 'center',
+    },
+    textp: {
+        marginTop: 10,
+        marginBottom: 55,
+        padding: 5,
+        fontSize: 14,
+        textAlign: 'justify',
+    },
     button: {
         alignItems: "center",
-        backgroundColor: "#DDDDDD",
+        backgroundColor: "#00b1a9",
         height: 40,
-        margin: 12,
-        padding: 10,     
+        marginTop: 0,
+        padding: 11,
+        marginLeft: 44,   
+        marginRight: 44,     
+        borderRadius: 10, 
+    },
+    buttontext: {
+        color: '#ffffff',
+    },
+    box: {
+        marginTop: 25,        
+        paddingLeft: 24,
+        paddingRight: 24,    
+    },
+    scrolltexth1: {
+        marginBottom: 15,
+        fontSize: 22,
+        textAlign: 'center',
+    },
+    scrolltextp: {
+        marginTop: 10,
+        fontSize: 14,
+        textAlign: 'justify',
+    },
+    scrolltextp1: {
+        marginTop: 5,
+        fontSize: 14,
+        textAlign: 'justify',
     },
 
 });
