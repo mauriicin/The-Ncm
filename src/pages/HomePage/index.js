@@ -9,6 +9,7 @@ import { View, Text, TouchableOpacity, useColorScheme, TextInput, ScrollView, Al
 import styles from './styles';
 //estrutura do layout
 import HeaderHomePage from "../../components/Layouts/HeaderHomePage";
+import Footer from "../../components/Layouts/Footer";
 
 
 export default function HomePage(){
@@ -22,7 +23,7 @@ export default function HomePage(){
 
     
     //definindo variaveis
-    const [number, onChangeNumber] = useState(null);
+    const [number, setNumber] = useState(null);
 
     const navigation = useNavigation();
 
@@ -30,18 +31,26 @@ export default function HomePage(){
         navigation.navigate('Consulta', {ncm});
     }
  
-    function handleSubmit(data){        
-        if(!data){
+    function handleSubmit(data){     
+        if(data.length < 8){
+            return Alert.alert(
+                "Erro",
+                "Por favor, digite um NCM válido.",
+                [
+                  { text: "OK"}
+                ]
+            );
+        }else if(!data){
             return Alert.alert(
                 "Erro",
                 "O NCM não foi preenchido.",
                 [
                   { text: "OK"}
                 ]
-              );
-        }   
-        else {
-           return navigateToConsulta(data);
+            );
+        }else{
+            setNumber(null);
+            return navigateToConsulta(data);
         }
     }
       
@@ -58,13 +67,13 @@ export default function HomePage(){
                 </View> 
 
                 <TextInput 
-                maxLength={8}
-                style={[styles.inputhome, themeTextInput]} 
-                placeholderTextColor={placecolor} 
-                onChangeText={onChangeNumber} 
-                value={number} 
-                placeholder="Digite o código NCM para pesquisar"
-                keyboardType="numeric"
+                    maxLength={8}
+                    style={[styles.inputhome, themeTextInput]} 
+                    placeholderTextColor={placecolor} 
+                    onChangeText={setNumber} 
+                    value={number} 
+                    placeholder="Digite o código NCM para pesquisar"
+                    keyboardType="numeric"
                 />
                
                 <TouchableOpacity 
@@ -88,6 +97,8 @@ export default function HomePage(){
                     <Text style={[styles.scrolltextp, themeTextStyle]}>A classificação incorreta do produto pode trazer sérios problemas ao contribuinte, como por exemplo uma penalidade para a classificação fiscal inadequada e o recolhimento a menor de impostos e contribuições.</Text>
                     <Text style={[styles.scrolltextp, themeTextStyle]}>Nas operações do comércio exterior, há previsão de multa sobre o valor aduaneiro da mercadoria classificada incorretamente.</Text>
                 </View>
+                
+                <Footer />
         </ScrollView>
         </View> 
         </>

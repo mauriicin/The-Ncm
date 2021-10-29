@@ -8,8 +8,7 @@ import api from '../../services/api';
 import styles from './styles';
 //estrutura do layout
 import HeaderPages from "../../components/Layouts/HeaderPages";
-
-
+import Footer from "../../components/Layouts/Footer";
 
 
 export default function Consulta(){
@@ -26,60 +25,64 @@ export default function Consulta(){
 
     //inicio
 
-    const [ncmbusca, setNcm] = useState([]);
+    const [ncmBusca, setncmBusca] = useState([]);
     const [total, setTotal] = useState(0);
-
 
     const [loading, setLoading] = useState(false);
     
-
     async function loadConsulta(){
         if(loading){
-            return;
+            return null;
         }
-        if(total > 0 & ncmbusca.length == total){
-            return;
+        if(total > 0 & ncmBusca.length == total){
+            return ;
         }
         setLoading(true);
 
         const response = await api.get('ncm', {
             params: {
                 q: ncm
-              }
+            }
         });
 
         
-        setNcm([...ncmbusca, ...response.data.data]);
+        setncmBusca(response.data.data);
         setTotal(response.headers['x-total-count']);
         setLoading(false);
     }
 
-    useEffect(
-        () => {
-            loadConsulta();
-        }       
-    );
+    useEffect(() => {
+        loadConsulta();
+    });
 
   
-    return(       
+    return(
         <>
         <StatusBar style={statusbarcolor} translucent={true} animated={true} />
         <View style={[styles.container, themeContainerStyle]}>
             <HeaderPages />
             
             <FlatList
-                data={ncmbusca}
-                keyExtractor={ncmbusca => String(ncmbusca.codigo)}
+                data={ncmBusca}
+                keyExtractor={ncmBusca => String(ncmBusca.codigo)}
                 showsVerticalScrollIndicator={false}
                 onEndReached={loadConsulta}
                 onEndReachedThreshold={0.2}
-                renderItem={(ncmbusca) => {
-                    console.log(ncmbusca.item);
-                    return (<></>);
-                }}  
-            />                 
+                renderItem={ncmBusca => (
+                    <>
+                        <View style={styles.item}>
+                            <Text style={[styles.itemName, themeTextStyle]}>Código NCM:</Text>
+                            <Text style={[styles.itemData, themeTextStyle]}>{ncmBusca.item.codigo}</Text>
 
-        </View> 
+                            <Text style={[styles.itemName, themeTextStyle]}>Descrição</Text>
+                            <Text style={[styles.itemData, themeTextStyle]}>{ncmBusca.item.descricao}</Text>
+                        </View>
+                    </>
+                )}
+            />
+        <Footer />                
+        </View>         
+        
         </>
     );
 }
