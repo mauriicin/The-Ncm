@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigation, useRoute  } from '@react-navigation/native';
-import { View, FlatList, Text, useColorScheme } from 'react-native';
+import { View, FlatList, Text, useColorScheme, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import { AdMobBanner, AdMobInterstitial, PublisherBanner, AdMobRewarded, setTestDeviceIDAsync,} from 'expo-ads-admob';
@@ -19,17 +19,13 @@ export default function Consulta(){
     const themeTextInput = colorScheme === 'light' ? styles.lightThemeInput : styles.darkThemeInput;
     const statusbarcolor = colorScheme === 'light' ? 'dark' : 'light';
     const placecolor = colorScheme === 'light' ? '#333' : '#fff';
-
-
     const navigation = useNavigation();
     const route = useRoute();
     const ncm = route.params.ncm;
     //inicio
     const [ncmBusca, setncmBusca] = useState([]);
     const [total, setTotal] = useState(0);
-
-    const [loading, setLoading] = useState(false);
-    
+    const [loading, setLoading] = useState(false);    
     async function loadConsulta(){
         if(loading){
             return null;
@@ -43,17 +39,22 @@ export default function Consulta(){
             params: {
                 q: ncm
             }
-        });
-
-        
+        });        
+        if(response.data.totalDocs == '0'){
+            return Alert.alert(
+                "Erro",
+                "Opss 👎 não encontramos nenhuma informação para a consulta realizada",
+                [
+                  { text: "OK", onPress: () => navigation.goBack()}
+                ]
+            );
+        } else {        
         setncmBusca(response.data.data);
         setTotal(response.headers['x-total-count']);
         setLoading(false);
+        }
     }
-
-    useEffect(() => {
-        loadConsulta();
-    });
+    useEffect(() => {loadConsulta();});
 
   
     return(

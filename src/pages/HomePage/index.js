@@ -24,13 +24,11 @@ export default function HomePage(){
     
     //definindo variaveis
     const [number, setNumber] = useState(null);
-
     const navigation = useNavigation();
-
     function navigateToConsulta(ncm){
         navigation.navigate('Consulta', {ncm});
     }
- 
+    //consulta ncm 
     function handleSubmit(data){     
         if(data.length < 8){
             return Alert.alert(
