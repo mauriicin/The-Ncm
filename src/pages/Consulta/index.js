@@ -3,14 +3,13 @@ import { useNavigation, useRoute  } from '@react-navigation/native';
 import { View, FlatList, Text, useColorScheme, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
-import { AdMobBanner, AdMobInterstitial, PublisherBanner, AdMobRewarded, setTestDeviceIDAsync,} from 'expo-ads-admob';
-
 //consulta api
 import api from '../../services/api';
 import styles from './styles';
 //estrutura do layout
 import HeaderPages from "../../components/Layouts/HeaderPages";
 import Footer from "../../components/Layouts/Footer";
+import Ads from "../../components/Layouts/AdMob"
 
 export default function Consulta(){
     const colorScheme = useColorScheme();
@@ -21,17 +20,14 @@ export default function Consulta(){
     const placecolor = colorScheme === 'light' ? '#333' : '#fff';
     const navigation = useNavigation();
     const route = useRoute();
-    //admob
-    // Set global test device ID
-    await setTestDeviceIDAsync('EMULATOR');
-
-
+  
 
     //recebe dados e retorna dados
     const ncm = route.params.ncm;
     const [ncmBusca, setncmBusca] = useState([]);
     const [total, setTotal] = useState(0);
-    const [loading, setLoading] = useState(false);    
+    const [loading, setLoading] = useState(false);
+
     async function loadConsulta(){
         if(loading){
             return null;
@@ -55,17 +51,20 @@ export default function Consulta(){
                 ]
             );
         } else {        
-        setncmBusca(response.data.data);
-        setTotal(response.headers['x-total-count']);
-        setLoading(false);
+            setncmBusca(response.data.data);
+            setTotal(response.headers['x-total-count']);
+            setLoading(false);
         }
     }
-    useEffect(() => {loadConsulta();});
 
-  
+    useEffect(() => {
+        loadConsulta();
+    }, []);
+
     return(
         <>
         <StatusBar style={statusbarcolor} translucent={true} animated={true} />
+        <Ads />
         <View style={[styles.container, themeContainerStyle]}>
             <HeaderPages />
             
