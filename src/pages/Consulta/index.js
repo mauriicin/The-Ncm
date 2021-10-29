@@ -21,8 +21,14 @@ export default function Consulta(){
     const placecolor = colorScheme === 'light' ? '#333' : '#fff';
     const navigation = useNavigation();
     const route = useRoute();
+    //admob
+    // Set global test device ID
+    await setTestDeviceIDAsync('EMULATOR');
+
+
+
+    //recebe dados e retorna dados
     const ncm = route.params.ncm;
-    //inicio
     const [ncmBusca, setncmBusca] = useState([]);
     const [total, setTotal] = useState(0);
     const [loading, setLoading] = useState(false);    
