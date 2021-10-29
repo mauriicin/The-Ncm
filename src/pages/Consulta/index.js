@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 
 import { useNavigation, useRoute  } from '@react-navigation/native';
-import { View, Image, Text, TouchableOpacity, useColorScheme } from 'react-native';
+import { View, FlatList, Text, TouchableOpacity, useColorScheme } from 'react-native';
 import { StatusBar } from 'expo-status-bar'; // automatically switches bar style based on theme!
 
-
+import api from '../../services/api';
 import styles from './styles';
 //estrutura do layout
 import HeaderPages from "../../components/Layouts/HeaderPages";
+
+
 
 
 export default function Consulta(){
@@ -22,8 +24,41 @@ export default function Consulta(){
     const route = useRoute();
     const ncm = route.params.ncm;
 
+    //inicio
+
+    const [ncmbusca, setNcm] = useState([]);
+    const [total, setTotal] = useState(0);
+
+
+    const [loading, setLoading] = useState(false);
     
 
+    async function loadConsulta(){
+        if(loading){
+            return;
+        }
+        if(total > 0 & ncmbusca.length == total){
+            return;
+        }
+        setLoading(true);
+
+        const response = await api.get('ncm', {
+            params: {
+                q: ncm
+              }
+        });
+
+        
+        setNcm([...ncmbusca, ...response.data.data]);
+        setTotal(response.headers['x-total-count']);
+        setLoading(false);
+    }
+
+    useEffect(
+        () => {
+            loadConsulta();
+        }       
+    );
 
   
     return(       
@@ -31,10 +66,18 @@ export default function Consulta(){
         <StatusBar style={statusbarcolor} translucent={true} animated={true} />
         <View style={[styles.container, themeContainerStyle]}>
             <HeaderPages />
-
-            <View>
-                <Text style={[styles.text, themeTextStyle]}> {ncm} </Text>
-            </View>         
+            
+            <FlatList
+                data={ncmbusca}
+                keyExtractor={ncmbusca => String(ncmbusca.codigo)}
+                showsVerticalScrollIndicator={false}
+                onEndReached={loadConsulta}
+                onEndReachedThreshold={0.2}
+                renderItem={(ncmbusca) => {
+                    console.log(ncmbusca.item);
+                    return (<></>);
+                }}  
+            />                 
 
         </View> 
         </>
