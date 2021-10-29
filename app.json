@@ -21,7 +21,9 @@
       "supportsTablet": true,
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-3940256099942544~3347511713"
-      }
+      },
+      "bundleIdentifier": "com.mauriciosouza.thencm",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
@@ -30,7 +32,9 @@
       },
       "config": {
         "googleMobileAdsAppId": "ca-app-pub-3940256099942544~3347511713"
-      }
+      },
+      "package": "com.mauriciosouza.thencm",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
