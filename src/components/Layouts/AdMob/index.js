@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { useFocusEffect } from '@react-navigation/native';
-import {  AdMobRewarded, setTestDeviceIDAsync } from 'expo-ads-admob';
+import { AdMobRewarded } from 'expo-ads-admob';
 
 
 export default function Banners(){    
@@ -16,11 +16,10 @@ export default function Banners(){
         });
     }   
     
-
-    useFocusEffect(() => {
-        showRewarded();
-    }, []);
-
-    
+    useFocusEffect(
+        useCallback(() => {    
+          return () => showRewarded();
+        }, [])
+      );
     return <></>;
 }

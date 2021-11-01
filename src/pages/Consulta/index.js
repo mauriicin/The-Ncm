@@ -87,8 +87,7 @@ export default function Consulta(){
                 )}
             />
         <Footer />                
-        </View>         
-        
+        </View>  
         </>
     );
 }
