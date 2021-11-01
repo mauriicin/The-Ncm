@@ -4,7 +4,7 @@ import { View, FlatList, Text, useColorScheme, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 //consulta api
-import api from '../../services/api';
+import apibrasil from '../../services/apibrasil';
 import styles from './styles';
 //estrutura do layout
 import HeaderPages from "../../components/Layouts/HeaderPages";
@@ -22,8 +22,8 @@ export default function ConsultaCnpj(){
     const route = useRoute();
   
     //recebe dados e retorna dados
-    const ncm = route.params.ncm;
-    const [ncmBusca, setncmBusca] = useState([]);
+    const cnpj = route.params.cnpj;
+    const [cnpjBusca, setcnpjBusca] = useState([]);
     const [total, setTotal] = useState(0);
     const [loading, setLoading] = useState(false);
 
@@ -31,16 +31,13 @@ export default function ConsultaCnpj(){
         if(loading){
             return null;
         }
-        if(total > 0 & ncmBusca.length == total){
+        if(total > 0 & cnpjBusca.length == total){
             return ;
         }
         setLoading(true);
 
-        const response = await api.get('ncm', {
-            params: {
-                q: ncm
-            }
-        });        
+        const response = await apibrasil.get('cnpj/v1/'+cnpj); 
+        console.log(response);       
         if(response.data.totalDocs == '0'){
             return Alert.alert(
                 "Erro",
@@ -50,7 +47,7 @@ export default function ConsultaCnpj(){
                 ]
             );
         } else {        
-            setncmBusca(response.data.data);
+            setcnpjBusca(response.data);
             setTotal(response.headers['x-total-count']);
             setLoading(false);
         }
@@ -66,21 +63,21 @@ export default function ConsultaCnpj(){
         <Ads />
         <View style={[styles.container, themeContainerStyle]}>
             <HeaderPages />
-            
+                        
             <FlatList
-                data={ncmBusca}
-                keyExtractor={ncmBusca => String(ncmBusca.codigo)}
+                data={cnpjBusca}
+                keyExtractor={cnpjBusca => String(cnpjBusca.cnpj)}
                 showsVerticalScrollIndicator={false}
                 onEndReached={loadConsulta}
                 onEndReachedThreshold={0.2}
-                renderItem={ncmBusca => (
+                renderItem={cnpjBusca => (
                     <>
                         <View style={styles.item}>
                             <Text style={[styles.itemName, themeTextStyle]}>Código NCM:</Text>
-                            <Text style={[styles.itemData, themeTextStyle]}>{ncmBusca.item.codigo}</Text>
+                            <Text style={[styles.itemData, themeTextStyle]}>{cnpjBusca.item.cnpj}</Text>
 
                             <Text style={[styles.itemName, themeTextStyle]}>Descrição</Text>
-                            <Text style={[styles.itemData, themeTextStyle]}>{ncmBusca.item.descricao}</Text>
+                            <Text style={[styles.itemData, themeTextStyle]}>{cnpjBusca.item.descricao_matriz_filial}</Text>
                         </View>
                     </>
                 )}

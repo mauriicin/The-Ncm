@@ -45,8 +45,8 @@ export default function Routes(){
                 headerShown: false,
                 })}>
                 <Rotas.Screen name="Ncm" component={HomePage} />
-                <Rotas.Screen name="Cest" component={Cest} />
-                <Rotas.Screen name="Cnpj" component={Cnpj} />
+                <Rotas.Screen name="Cest" component={Cest} options={{ tabBarButton: () => null }} />
+                <Rotas.Screen name="Cnpj" component={Cnpj} options={{ tabBarButton: () => null }}  />
                 <Rotas.Screen name="Sobre" component={Sobre} />                
                 
                 <Rotas.Screen name="ConsultaNcm" component={ConsultaNcm} options={{ tabBarButton: () => null }} />

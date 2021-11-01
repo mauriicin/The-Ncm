@@ -24,7 +24,7 @@ export default function Sobre(){
                 
                 <View style={styles.box}>
                     <Text style={[styles.scrolltexth1, themeTextStyle]}>O que é The NCM?</Text>            
-                    <Text style={[styles.scrolltextp, themeTextStyle]}>O The NCM foi desenvolvido para agilizar algumas consultas sem precisar de acesso ao um computador, usamos sistema integrados com a receita federal para fazer consulta 100% confiaveis.</Text>       
+                    <Text style={[styles.scrolltextp, themeTextStyle]}>O The NCM foi desenvolvido para agilizar algumas consultas sem precisar de acesso a um computador, usamos sistemas integrados com a receita federal para fazer consulta 100% confiaveis.</Text>       
                     <Text style={[styles.scrolltextp, themeTextStyle]}>Estamos em desenvolvimento, soltaremos novas versões, com mais funções que ajude você a otimizar seu dia.</Text>       
                 </View>
                 

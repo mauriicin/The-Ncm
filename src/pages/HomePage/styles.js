@@ -45,6 +45,7 @@ export default StyleSheet.create({
         paddingLeft: 12,
         paddingRight: 12,
         borderWidth: 1,
+        textAlign: 'center',
     },
     texth1: {
         marginTop: 35,
