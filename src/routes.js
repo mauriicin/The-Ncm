@@ -7,7 +7,8 @@ import { useColorScheme } from 'react-native';
 const Rotas = createBottomTabNavigator();
 
 import HomePage from './pages/HomePage';
-import Consulta from './pages/Consulta';
+import ConsultaNcm from './pages/ConsultaNcm';
+import Sobre from './pages/Sobre';
 
 export default function Routes(){
     const scheme = useColorScheme();
@@ -18,13 +19,11 @@ export default function Routes(){
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
 
-                    if (route.name === 'HomePage') {
-                    iconName = focused
-                        ? 'home'
-                        : 'home';
-                    } else if (route.name === 'Consulta') {
-                    iconName = focused ? 'search' : 'search';
-                    }
+                    if (route.name === 'NCM') {
+                    iconName = focused ? 'home' : 'home';
+                    } else if (route.name === 'Sobre') {
+                    iconName = focused ? 'heart' : 'heart';
+                    } 
 
                     // You can return any component that you like here!
                     return <Feather name={iconName} size={size} color={color} />;
@@ -33,8 +32,11 @@ export default function Routes(){
                 tabBarInactiveTintColor: '#333333',
                 headerShown: false,
                 })}>
-                <Rotas.Screen name="HomePage" component={HomePage} />
-                <Rotas.Screen name="Consulta" component={Consulta} />
+                <Rotas.Screen name="NCM" component={HomePage} />
+                <Rotas.Screen name="Sobre" component={Sobre} />                
+                
+                <Rotas.Screen name="ConsultaNcm" component={ConsultaNcm} options={{ tabBarButton: () => null }} />
+
             </Rotas.Navigator>
         </NavigationContainer>
     );

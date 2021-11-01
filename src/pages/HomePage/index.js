@@ -26,7 +26,7 @@ export default function HomePage(){
     const [number, setNumber] = useState(null);
     const navigation = useNavigation();
     function navigateToConsulta(ncm){
-        navigation.navigate('Consulta', {ncm});
+        navigation.navigate('ConsultaNcm', {ncm});
     }
     //consulta ncm 
     function handleSubmit(data){     

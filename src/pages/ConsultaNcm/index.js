@@ -21,7 +21,6 @@ export default function Consulta(){
     const navigation = useNavigation();
     const route = useRoute();
   
-
     //recebe dados e retorna dados
     const ncm = route.params.ncm;
     const [ncmBusca, setncmBusca] = useState([]);
