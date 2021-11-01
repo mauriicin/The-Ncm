@@ -9,7 +9,7 @@ import styles from './styles';
 import HeaderHomePage from "../../components/Layouts/HeaderHomePage";
 import Footer from "../../components/Layouts/Footer";
 
-export default function Sobre(){
+export default function Cnpj(){
     const colorScheme = useColorScheme();
     const themeContainerStyle = colorScheme === 'light' ? styles.lightContainer : styles.darkContainer;
     const themeTextStyle = colorScheme === 'light' ? styles.lightThemeText : styles.darkThemeText;

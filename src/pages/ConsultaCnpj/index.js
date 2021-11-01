@@ -11,7 +11,7 @@ import HeaderPages from "../../components/Layouts/HeaderPages";
 import Footer from "../../components/Layouts/Footer";
 import Ads from "../../components/Layouts/AdMob"
 
-export default function ConsultaNcm(){
+export default function ConsultaCnpj(){
     const colorScheme = useColorScheme();
     const themeContainerStyle = colorScheme === 'light' ? styles.lightContainer : styles.darkContainer;
     const themeTextStyle = colorScheme === 'light' ? styles.lightThemeText : styles.darkThemeText;
