@@ -34,7 +34,7 @@ export default function Routes(){
                         iconName = focused ? 'badge-account-horizontal' : 'badge-account-horizontal-outline';
                     } 
                     else if (route.name === 'Sobre') {
-                    iconName = focused ? 'heart' : 'heart-outline';
+                        iconName = focused ? 'heart' : 'heart-outline';
                     }
 
                     // You can return any component that you like here!
@@ -45,8 +45,8 @@ export default function Routes(){
                 headerShown: false,
                 })}>
                 <Rotas.Screen name="Ncm" component={HomePage} />
-                <Rotas.Screen name="Cest" component={Cest} options={{ tabBarButton: () => null }} />
-                <Rotas.Screen name="Cnpj" component={Cnpj} options={{ tabBarButton: () => null }}  />
+                <Rotas.Screen name="Cest" component={Cest} />
+                <Rotas.Screen name="Cnpj" component={Cnpj} options={{ tabBarButton: () => null }} />
                 <Rotas.Screen name="Sobre" component={Sobre} />                
                 
                 <Rotas.Screen name="ConsultaNcm" component={ConsultaNcm} options={{ tabBarButton: () => null }} />

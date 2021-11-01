@@ -21,7 +21,7 @@ export default function HeaderHomePage(){
                 <Image source={logomarca} />
                 
                 <TouchableOpacity onPress={navigateBack}>
-                    <Feather name="arrow-left" size={28} color="#00b1a9"/>
+                    <Feather name="x-circle" size={28} color="#00b1a9"/>
                 </TouchableOpacity>
         </View>
     );

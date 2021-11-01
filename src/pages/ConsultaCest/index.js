@@ -22,8 +22,8 @@ export default function ConsultaCest(){
     const route = useRoute();
   
     //recebe dados e retorna dados
-    const ncm = route.params.ncm;
-    const [ncmBusca, setncmBusca] = useState([]);
+    const cest = route.params.cest;
+    const [cestBusca, setCestBusca] = useState([]);
     const [total, setTotal] = useState(0);
     const [loading, setLoading] = useState(false);
 
@@ -31,14 +31,14 @@ export default function ConsultaCest(){
         if(loading){
             return null;
         }
-        if(total > 0 & ncmBusca.length == total){
+        if(total > 0 & cestBusca.length == total){
             return ;
         }
         setLoading(true);
 
-        const response = await api.get('ncm', {
+        const response = await api.get('cest', {
             params: {
-                q: ncm
+                q: cest
             }
         });        
         if(response.data.totalDocs == '0'){
@@ -68,19 +68,22 @@ export default function ConsultaCest(){
             <HeaderPages />
             
             <FlatList
-                data={ncmBusca}
-                keyExtractor={ncmBusca => String(ncmBusca.codigo)}
+                data={cestBusca}
+                keyExtractor={cestBusca => String(cestBusca.cest)}
                 showsVerticalScrollIndicator={false}
                 onEndReached={loadConsulta}
                 onEndReachedThreshold={0.2}
-                renderItem={ncmBusca => (
+                renderItem={cestBusca => (
                     <>
                         <View style={styles.item}>
                             <Text style={[styles.itemName, themeTextStyle]}>Código NCM:</Text>
-                            <Text style={[styles.itemData, themeTextStyle]}>{ncmBusca.item.codigo}</Text>
+                            <Text style={[styles.itemData, themeTextStyle]}>{cestBusca.item.codigo}</Text>
+                            
+                            <Text style={[styles.itemName, themeTextStyle]}>Código NCM:</Text>
+                            <Text style={[styles.itemData, themeTextStyle]}>{cestBusca.item.codigo}</Text>
 
                             <Text style={[styles.itemName, themeTextStyle]}>Descrição</Text>
-                            <Text style={[styles.itemData, themeTextStyle]}>{ncmBusca.item.descricao}</Text>
+                            <Text style={[styles.itemData, themeTextStyle]}>{cestBusca.item.descricao}</Text>
                         </View>
                     </>
                 )}

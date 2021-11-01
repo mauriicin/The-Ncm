@@ -36,7 +36,17 @@ export default StyleSheet.create({
     darkThemeButton: {
         borderColor: '#ffffff',
         color: '#ffffff',
-    },   
+    },
+   
+    //inputs
+    inputhome: {
+        height: 40,
+        margin: 12,
+        paddingLeft: 12,
+        paddingRight: 12,
+        borderWidth: 1,
+        textAlign: 'center',
+    },
     texth1: {
         marginTop: 35,
         marginBottom: 15,

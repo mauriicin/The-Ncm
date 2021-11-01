@@ -17,7 +17,6 @@ export default function ConsultaCnpj(){
     const themeTextStyle = colorScheme === 'light' ? styles.lightThemeText : styles.darkThemeText;
     const themeTextInput = colorScheme === 'light' ? styles.lightThemeInput : styles.darkThemeInput;
     const statusbarcolor = colorScheme === 'light' ? 'dark' : 'light';
-    const placecolor = colorScheme === 'light' ? '#333' : '#fff';
     const navigation = useNavigation();
     const route = useRoute();
   
@@ -36,9 +35,12 @@ export default function ConsultaCnpj(){
         }
         setLoading(true);
 
-        const response = await apibrasil.get('cnpj/v1/'+cnpj); 
-        console.log(response);       
-        if(response.data.totalDocs == '0'){
+        const response = await apibrasil.get('cnpj/v1/', {
+            params: {
+                q: cnpj
+            }
+        });              
+        if(response.statusCode == 404){
             return Alert.alert(
                 "Erro",
                 "Opss 👎 não encontramos nenhuma informação para a consulta realizada",
@@ -57,13 +59,14 @@ export default function ConsultaCnpj(){
         loadConsulta();
     }, []);
 
+
     return(
         <>
-        <StatusBar style={statusbarcolor} translucent={true} animated={true} />
+         <StatusBar style={statusbarcolor} translucent={true} animated={true} />
         <Ads />
         <View style={[styles.container, themeContainerStyle]}>
             <HeaderPages />
-                        
+               
             <FlatList
                 data={cnpjBusca}
                 keyExtractor={cnpjBusca => String(cnpjBusca.cnpj)}
@@ -83,7 +86,7 @@ export default function ConsultaCnpj(){
                 )}
             />
         <Footer />                
-        </View>  
+        </View> 
         </>
     );
 }
