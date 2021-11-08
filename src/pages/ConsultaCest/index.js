@@ -79,8 +79,8 @@ export default function ConsultaCest(){
                             <Text style={[styles.itemName, themeTextStyle]}>Código NCM:</Text>
                             <Text style={[styles.itemData, themeTextStyle]}>{cestBusca.item.codigo}</Text>
                             
-                            <Text style={[styles.itemName, themeTextStyle]}>Código NCM:</Text>
-                            <Text style={[styles.itemData, themeTextStyle]}>{cestBusca.item.codigo}</Text>
+                            <Text style={[styles.itemName, themeTextStyle]}>Código CEST:</Text>
+                            <Text style={[styles.itemData, themeTextStyle]}>{cestBusca.item.cest}</Text>
 
                             <Text style={[styles.itemName, themeTextStyle]}>Descrição</Text>
                             <Text style={[styles.itemData, themeTextStyle]}>{cestBusca.item.descricao}</Text>

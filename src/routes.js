@@ -12,7 +12,7 @@ import Cest from './pages/Cest';
 import Cnpj from './pages/Cnpj';
 import Sobre from './pages/Sobre';
 import ConsultaNcm from './pages/ConsultaNcm';
-import ConsultaCest from './pages/ConsultaNcm';
+import ConsultaCest from './pages/ConsultaCest';
 import ConsultaCnpj from './pages/ConsultaCnpj';
 
 export default function Routes(){
@@ -26,7 +26,7 @@ export default function Routes(){
 
                     if (route.name === 'Ncm') {
                     iconName = focused ? 'bookmark-check' : 'bookmark-check-outline';
-                    } 
+                    }                      
                     else if (route.name === 'Cest') {
                         iconName = focused ? 'view-list' : 'view-list-outline';
                     } 
