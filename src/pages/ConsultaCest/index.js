@@ -7,7 +7,7 @@ import { StatusBar } from 'expo-status-bar';
 import api from '../../services/api';
 import styles from './styles';
 //estrutura do layout
-import HeaderPages from "../../components/Layouts/HeaderPages";
+import HeaderPages from "../../components/Layouts/HeaderCest";
 import Footer from "../../components/Layouts/Footer";
 import Ads from "../../components/Layouts/AdMob"
 
@@ -50,7 +50,7 @@ export default function ConsultaCest(){
                 ]
             );
         } else {        
-            setncmBusca(response.data.data);
+            setCestBusca(response.data.data);
             setTotal(response.headers['x-total-count']);
             setLoading(false);
         }

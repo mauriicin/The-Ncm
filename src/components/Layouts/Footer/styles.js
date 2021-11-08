@@ -7,8 +7,8 @@ export default StyleSheet.create({
         justifyContent: "space-around",
         alignItems: "center",
         textAlign: "center",
-        paddingTop: 50,
-        paddingBottom:50,
+        paddingTop: 10,
+        paddingBottom: 10,
     },
     footerText: {
         fontSize: 16,

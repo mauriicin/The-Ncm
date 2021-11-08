@@ -14,7 +14,7 @@ export default function HeaderHomePage(){
     const logomarca = colorScheme === 'light' ? logoImg : logoImgdark;
 
     function navigateBack(){
-        navigation.goBack();
+        navigation.navigate('Cnpj');
     }    
     return(
         <View style={styles.header}>

@@ -7,7 +7,7 @@ import { StatusBar } from 'expo-status-bar';
 import api from '../../services/api';
 import styles from './styles';
 //estrutura do layout
-import HeaderPages from "../../components/Layouts/HeaderPages";
+import HeaderPages from "../../components/Layouts/HeaderNcm";
 import Footer from "../../components/Layouts/Footer";
 import Ads from "../../components/Layouts/AdMob"
 

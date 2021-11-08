@@ -28,7 +28,7 @@ export default function HomePage(){
     }
     //consulta CNPJ 
     function handleSubmit(data){     
-        if(data.length < 6){
+        if(data.length < 4){
             return Alert.alert(
                 "Erro",
                 "Por favor, digite um Cest válido.",
