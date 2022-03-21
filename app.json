@@ -2,7 +2,7 @@
   "expo": {
     "name": "The NCM",
     "slug": "the-ncm",
-    "version": "2.0.0",
+    "version": "2.5.0",
 
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
@@ -21,10 +21,10 @@
     "ios": {
       "supportsTablet": true,
       "config": {
-        "googleMobileAdsAppId": "ca-app-pub-3940256099942544~3347511713"
+        "googleMobileAdsAppId": "ca-app-pub-7956965293728495~1548807236"
       },
       "bundleIdentifier": "com.mauriciosouza.thencm",
-      "buildNumber": "2.1.0"
+      "buildNumber": "2.5.0"
     },
     "android": {
       "adaptiveIcon": {
@@ -32,10 +32,10 @@
         "backgroundColor": "#FFFFFF"
       },
       "config": {
-        "googleMobileAdsAppId": "ca-app-pub-3940256099942544~3347511713"
+        "googleMobileAdsAppId": "ca-app-pub-7956965293728495~5679623932"
       },
       "package": "com.mauriciosouza.thencm",
-      "versionCode": 220
+      "versionCode": 250
     },
     "web": {
       "favicon": "./src/assets/favicon.png"

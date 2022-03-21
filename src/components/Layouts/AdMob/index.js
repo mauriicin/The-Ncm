@@ -5,8 +5,8 @@ import { AdMobRewarded } from 'expo-ads-admob';
 
 export default function Banners(){    
     const rewardedAdID = Platform.select({
-        ios: "ca-app-pub-7956965293728495~1548807236",
-        android: "ca-app-pub-7956965293728495~5679623932",
+        ios: "ca-app-pub-7956965293728495/3346471615",
+        android: "ca-app-pub-7956965293728495/3849884556",
     });
 
     async function showRewarded() {
