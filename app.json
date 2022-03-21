@@ -35,7 +35,8 @@
         "googleMobileAdsAppId": "ca-app-pub-7956965293728495~5679623932"
       },
       "package": "com.mauriciosouza.thencm",
-      "versionCode": 250
+      "versionCode": 250,
+      "permissions": []
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
