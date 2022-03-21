@@ -35,11 +35,8 @@ export default function ConsultaCnpj(){
         }
         setLoading(true);
 
-        const response = await apibrasil.get('cnpj/v1/', {
-            params: {
-                q: cnpj
-            }
-        });              
+        const response = await apibrasil.get('cnpj/v1/' + cnpj);         
+        
         if(response.statusCode == 404){
             return Alert.alert(
                 "Erro",
