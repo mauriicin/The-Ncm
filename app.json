@@ -2,7 +2,7 @@
   "expo": {
     "name": "The NCM",
     "slug": "the-ncm",
-    "version": "2.5.0",
+    "version": "2.6.0",
 
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
@@ -24,7 +24,7 @@
         "googleMobileAdsAppId": "ca-app-pub-7956965293728495~1548807236"
       },
       "bundleIdentifier": "com.mauriciosouza.thencm",
-      "buildNumber": "2.5.0"
+      "buildNumber": "2.6.0"
     },
     "android": {
       "adaptiveIcon": {
@@ -35,7 +35,7 @@
         "googleMobileAdsAppId": "ca-app-pub-7956965293728495~5679623932"
       },
       "package": "com.mauriciosouza.thencm",
-      "versionCode": 250,
+      "versionCode": 260,
       "permissions": []
     },
     "web": {
